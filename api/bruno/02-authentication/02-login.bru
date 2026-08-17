@@ -11,19 +11,94 @@ post {
 }
 
 body:json {
-  
-    "identifier": "user@example.com",
-    "password": "ChangeMe12345"
-  
+  {
+    "identifier": "demo@bajetiplus.test",
+    "password": "DemoPassword123"
+  }
 }
 
 script:post-response {
   const body = res.getBody();
   const token = body.data?.accessToken;
-
+  
   if (!token) {
     throw new Error("Login response does not contain an access token");
   }
-
+  
   bru.setEnvVar("accessToken", token);
+}
+
+example {
+  name: Login Response
+  
+  request: {
+    url: {{baseUrl}}/api/v1/auth/login
+    method: POST
+    mode: json
+    body:json: {
+      {
+        "identifier": "demo@bajetiplus.test",
+        "password": "DemoPassword123"
+      }
+    }
+  }
+  
+  response: {
+    headers: {
+      content-security-policy: default-src 'self';base-uri 'self';font-src 'self' https: data:;form-action 'self';frame-ancestors 'self';img-src 'self' data:;object-src 'none';script-src 'self';script-src-attr 'none';style-src 'self' https: 'unsafe-inline';upgrade-insecure-requests
+      cross-origin-opener-policy: same-origin
+      cross-origin-resource-policy: same-origin
+      origin-agent-cluster: ?1
+      referrer-policy: no-referrer
+      strict-transport-security: max-age=31536000; includeSubDomains
+      x-content-type-options: nosniff
+      x-dns-prefetch-control: off
+      x-download-options: noopen
+      x-frame-options: SAMEORIGIN
+      x-permitted-cross-domain-policies: none
+      x-xss-protection: 0
+      vary: Origin
+      access-control-allow-credentials: true
+      x-request-id: b18f2ef3-b44a-4311-952f-55bc789fd032
+      x-ratelimit-limit: 100
+      x-ratelimit-remaining: 99
+      x-ratelimit-reset: 60
+      content-type: application/json; charset=utf-8
+      content-length: 898
+      etag: W/"382-xbb+oRJd3VlPA05HUCtHSIS4ers"
+      date: Mon, 17 Aug 2026 12:18:42 GMT
+      connection: keep-alive
+      keep-alive: timeout=5
+    }
+  
+    status: {
+      code: 201
+      text: Created
+    }
+  
+    body: {
+      type: json
+      content: '''
+        {
+          "success": true,
+          "statusCode": 201,
+          "message": "Success",
+          "data": {
+            "accessToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MWZmNTgzZi05MjU5LTQxM2YtYTIzNy0wN2ZiNzdjZTYyODYiLCJ0eXBlIjoiYWNjZXNzIiwiaWF0IjoxNzg2OTY5MTIwLCJleHAiOjE3ODY5NzAwMjB9.QbHVGJumyPmiBghiDpyk_yLVRu7LgUGj6ZuYs54USA0",
+            "refreshToken": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1MWZmNTgzZi05MjU5LTQxM2YtYTIzNy0wN2ZiNzdjZTYyODYiLCJzaWQiOiI4YzYwMzE4My02NzdiLTQwYzEtYWM4Mi1mY2NlOGEyNWEwZDYiLCJmYW1pbHkiOiI1NWJmOThmNy04NWVhLTQxZTItOTM3Mi05NjJmMjg5N2U5NDIiLCJ0eXBlIjoicmVmcmVzaCIsImlhdCI6MTc4Njk2OTEyMCwiZXhwIjoxNzg5NTYxMTIwfQ.Hm3Y2S9axcJLG0SpIxO3ci2AtKN57Vr9-pSfoaSrZVc",
+            "user": {
+              "id": "51ff583f-9259-413f-a237-07fb77ce6286",
+              "email": "demo@bajetiplus.test",
+              "mobile": null,
+              "role": "USER",
+              "isActive": true,
+              "createdAt": "2026-08-17T12:01:19.041Z"
+            }
+          },
+          "timestamp": "2026-08-17T12:18:40.561Z",
+          "requestId": "b18f2ef3-b44a-4311-952f-55bc789fd032"
+        }
+      '''
+    }
+  }
 }

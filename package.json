@@ -15,6 +15,7 @@
     "generate:resource": "nest generate resource",
     "start": "nest start",
     "start:dev": "nest start --watch",
+    "start:dev:docker": "pnpm docker:up && nest start --watch",
     "start:prod": "node dist/main.js",
     "test": "jest --runInBand",
     "test:watch": "jest --watch",

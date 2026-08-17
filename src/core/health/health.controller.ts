@@ -23,8 +23,11 @@ export class HealthController {
     redis: string;
   }> {
     try {
-      await Promise.all([this.database.$queryRaw`SELECT 1`, this.cache.ping()]);
-      return { status: 'ready', database: 'up', redis: 'up' };
+      const [, redis] = await Promise.all([
+        this.database.$queryRaw`SELECT 1`,
+        this.cache.ping(),
+      ]);
+      return { status: 'ready', database: 'up', redis };
     } catch {
       throw new ServiceUnavailableException(
         'Required infrastructure is unavailable',

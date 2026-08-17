@@ -67,6 +67,26 @@ Errors contain `success`, `statusCode`, `message`, `error`, `path`, `timestamp`,
 
 ## Database, Docker, and tests
 
+Load the idempotent development dataset with:
+
+```bash
+pnpm db:seed
+```
+
+Demo login:
+
+```text
+Email: demo@bajetiplus.test
+Password: DemoPassword123
+Business ID: 00000000-0000-4000-8000-000000000001
+```
+
+The seed includes a Main Branch, categories, products, flexible variants, a
+service, inventory history, customer, supplier, credit sale, purchase, and
+expense. It can be rerun without duplicating records and refuses to execute
+when `NODE_ENV=production`. Override the demo credentials locally with
+`SEED_DEMO_EMAIL` and `SEED_DEMO_PASSWORD` if needed.
+
 ```bash
 pnpm prisma:validate
 pnpm db:migrate:dev       # create/apply a development migration

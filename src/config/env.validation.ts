@@ -48,8 +48,12 @@ export class EnvironmentVariables {
   @IsUrl({ require_tld: false, protocols: ['postgresql', 'postgres'] })
   DATABASE_URL!: string;
 
+  @IsOptional()
   @IsUrl({ require_tld: false, protocols: ['redis', 'rediss'] })
-  REDIS_URL!: string;
+  @Transform(({ value }: { value: unknown }) =>
+    typeof value === 'string' && value.trim() === '' ? undefined : value,
+  )
+  REDIS_URL?: string;
 
   @IsString()
   @MinLength(32)
@@ -85,16 +89,30 @@ export class EnvironmentVariables {
 
   @IsOptional()
   @IsString()
+  @Transform(({ value }: { value: unknown }) =>
+    typeof value === 'string' && value.trim() === '' ? undefined : value,
+  )
   FIREBASE_PROJECT_ID?: string;
 
   @IsOptional()
   @IsEmail()
+  @Transform(({ value }: { value: unknown }) =>
+    typeof value === 'string' && value.trim() === ''
+      ? undefined
+      : typeof value === 'string'
+        ? value.trim()
+        : value,
+  )
   FIREBASE_CLIENT_EMAIL?: string;
 
   @IsOptional()
   @IsString()
   @Transform(({ value }: { value: unknown }) =>
-    typeof value === 'string' ? value.replace(/\\n/g, '\n') : value,
+    typeof value === 'string' && value.trim() === ''
+      ? undefined
+      : typeof value === 'string'
+        ? value.replace(/\\n/g, '\n')
+        : value,
   )
   FIREBASE_PRIVATE_KEY?: string;
 }
