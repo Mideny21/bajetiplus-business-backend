@@ -1,0 +1,17 @@
+meta {
+  name: Dashboard
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/reports/dashboard
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~period: TODAY
+  ~from: 
+  ~to: 
+}

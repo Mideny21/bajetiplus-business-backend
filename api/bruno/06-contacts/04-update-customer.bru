@@ -1,0 +1,15 @@
+meta {
+  name: Update Customer
+  type: http
+  seq: 4
+}
+
+patch {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/customers/{{id}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+}

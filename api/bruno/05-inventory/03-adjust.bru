@@ -1,0 +1,19 @@
+meta {
+  name: Adjust
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/inventory/adjustments
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+    "catalogItemId": "{{catalogItemId}}",
+    "operation": "OPENING",
+    "quantity": 1
+  
+}

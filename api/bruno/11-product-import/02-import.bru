@@ -1,0 +1,15 @@
+meta {
+  name: Import
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/products/import
+  body: multipartForm
+  auth: inherit
+}
+
+body:multipart-form {
+  file: @file()
+}

@@ -1,0 +1,11 @@
+meta {
+  name: Archive Item
+  type: http
+  seq: 9
+}
+
+delete {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/catalog/{{id}}
+  body: none
+  auth: inherit
+}

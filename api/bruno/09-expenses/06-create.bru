@@ -1,0 +1,18 @@
+meta {
+  name: Create
+  type: http
+  seq: 6
+}
+
+post {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/expenses
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+    "categoryId": "{{categoryId}}",
+    "amount": 5000
+  
+}

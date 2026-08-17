@@ -1,0 +1,15 @@
+meta {
+  name: Update Item
+  type: http
+  seq: 8
+}
+
+patch {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/catalog/{{id}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+}

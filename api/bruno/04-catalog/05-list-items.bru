@@ -1,0 +1,16 @@
+meta {
+  name: List Items
+  type: http
+  seq: 5
+}
+
+get {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/catalog
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~type: 
+  ~includeArchived: 
+}

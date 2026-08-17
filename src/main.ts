@@ -9,6 +9,7 @@ import { GlobalExceptionFilter } from './common/filters/http-exception.filter';
 import { DevelopmentDelayInterceptor } from './common/interceptors/development-delay.interceptor';
 import { RequestIdInterceptor } from './common/interceptors/request-id.interceptor';
 import { ResponseInterceptor } from './common/interceptors/response.interceptor';
+import { setupSwagger } from './config/swagger';
 
 async function bootstrap(): Promise<void> {
   const app = await NestFactory.create<NestExpressApplication>(AppModule, {
@@ -19,6 +20,7 @@ async function bootstrap(): Promise<void> {
   const config = app.get(ConfigService);
   app.set('trust proxy', config.get<number>('app.trustProxy', 0));
   app.setGlobalPrefix(config.get<string>('app.apiPrefix', 'api/v1'));
+  setupSwagger(app);
   app.use(helmet());
   app.enableCors({
     origin: config.get<string[]>('app.corsOrigins', []),

@@ -1,0 +1,18 @@
+meta {
+  name: Create Supplier
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/suppliers
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+    "name": "Example",
+    "phone": "255712345678"
+  
+}

@@ -7,6 +7,6 @@ export default defineConfig({
   datasource: {
     url:
       process.env.DATABASE_URL ??
-      'postgresql://postgres:postgres@localhost:5432/nestjs_starter?schema=public',
+      'postgresql://postgres:postgres@localhost:5432/bajetiplus-business?schema=public',
   },
 });

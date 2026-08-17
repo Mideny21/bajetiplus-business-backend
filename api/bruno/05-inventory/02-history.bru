@@ -1,0 +1,15 @@
+meta {
+  name: History
+  type: http
+  seq: 2
+}
+
+get {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/inventory/movements
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~catalogItemId: 
+}

@@ -1,0 +1,18 @@
+meta {
+  name: Create Customer
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/customers
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+    "name": "Example",
+    "phone": "255712345678"
+  
+}

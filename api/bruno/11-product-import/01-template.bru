@@ -1,0 +1,11 @@
+meta {
+  name: Template
+  type: http
+  seq: 1
+}
+
+get {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/products/import/template
+  body: none
+  auth: inherit
+}

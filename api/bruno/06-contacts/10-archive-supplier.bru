@@ -1,0 +1,11 @@
+meta {
+  name: Archive Supplier
+  type: http
+  seq: 10
+}
+
+delete {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/suppliers/{{id}}
+  body: none
+  auth: inherit
+}

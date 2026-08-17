@@ -8,7 +8,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { JwtService } from '@nestjs/jwt';
 import { Prisma, User } from '@prisma/client';
-import bcrypt from 'bcryptjs';
+import * as bcrypt from 'bcryptjs';
 import { createHash, randomUUID } from 'node:crypto';
 import { normalizeMobile } from '../../common/utils/phone.util';
 import { DatabaseService } from '../../database/database.service';

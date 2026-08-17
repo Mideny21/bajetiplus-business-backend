@@ -1,8 +1,10 @@
 import { Controller, Get, ServiceUnavailableException } from '@nestjs/common';
+import { ApiTags } from '@nestjs/swagger';
 import { CacheService } from '../cache/cache.service';
 import { DatabaseService } from '../../database/database.service';
 
 @Controller('health')
+@ApiTags('Health')
 export class HealthController {
   constructor(
     private readonly database: DatabaseService,

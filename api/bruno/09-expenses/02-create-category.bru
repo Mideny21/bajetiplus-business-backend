@@ -1,0 +1,17 @@
+meta {
+  name: Create Category
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/expense-categories
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+    "name": "Example"
+  
+}

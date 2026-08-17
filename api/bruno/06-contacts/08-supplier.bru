@@ -1,0 +1,11 @@
+meta {
+  name: Supplier
+  type: http
+  seq: 8
+}
+
+get {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/suppliers/{{id}}
+  body: none
+  auth: inherit
+}

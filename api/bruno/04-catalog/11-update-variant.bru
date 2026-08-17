@@ -1,0 +1,21 @@
+meta {
+  name: Update Variant
+  type: http
+  seq: 11
+}
+
+patch {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/catalog/{{id}}/variants/{{variantId}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+    "name": "Example",
+    "attributes": {
+      "Size": "M",
+      "Color": "Black"
+    }
+  
+}

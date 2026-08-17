@@ -1,0 +1,15 @@
+meta {
+  name: Update Supplier
+  type: http
+  seq: 9
+}
+
+patch {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/suppliers/{{id}}
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+}

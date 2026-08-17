@@ -1,0 +1,11 @@
+meta {
+  name: Get Item
+  type: http
+  seq: 7
+}
+
+get {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/catalog/{{id}}
+  body: none
+  auth: inherit
+}

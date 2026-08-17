@@ -1,0 +1,19 @@
+meta {
+  name: Create
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{baseUrl}}/api/v1/businesses
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+    "name": "Example",
+    "industry": "clothing-fashion",
+    "type": "HYBRID"
+  
+}

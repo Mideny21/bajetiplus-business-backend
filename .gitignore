@@ -9,3 +9,9 @@ coverage/
 .DS_Store
 .idea/
 .vscode/
+
+# API client environments with local credentials or generated tokens
+api/bruno/environments/*.local.bru
+api/bruno/environments/Private*.bru
+api/postman/*.local.private.postman_environment.json
+api/postman/*.private.postman_environment.json

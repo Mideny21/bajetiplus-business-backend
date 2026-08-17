@@ -1,0 +1,15 @@
+meta {
+  name: List Suppliers
+  type: http
+  seq: 6
+}
+
+get {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/suppliers
+  body: none
+  auth: inherit
+}
+
+params:query {
+  ~includeArchived: 
+}

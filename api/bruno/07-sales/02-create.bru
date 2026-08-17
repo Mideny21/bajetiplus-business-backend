@@ -1,0 +1,23 @@
+meta {
+  name: Create
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{baseUrl}}/api/v1/businesses/{{businessId}}/sales
+  body: json
+  auth: inherit
+}
+
+body:json {
+  
+    "paymentMethod": "CARD",
+    "items": [
+      {
+        "catalogItemId": "{{catalogItemId}}",
+        "quantity": 1
+      }
+    ]
+  
+}
