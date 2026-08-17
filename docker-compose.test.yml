@@ -1,0 +1,26 @@
+name: ${APP_NAME:-nestjs-backend-starter}-test
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nestjs_starter_test
+    ports:
+      - '${TEST_POSTGRES_PORT:-5433}:5432'
+    tmpfs: [/var/lib/postgresql/data]
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d nestjs_starter_test']
+      interval: 2s
+      timeout: 3s
+      retries: 20
+  redis:
+    image: redis:7-alpine
+    ports:
+      - '${TEST_REDIS_PORT:-6380}:6379'
+    tmpfs: [/data]
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 2s
+      timeout: 3s
+      retries: 20

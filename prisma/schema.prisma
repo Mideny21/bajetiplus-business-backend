@@ -1,0 +1,41 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id           String           @id @default(uuid()) @db.Uuid
+  email        String?          @unique
+  mobile       String?          @unique
+  passwordHash String?
+  firebaseUid  String?          @unique
+  role         Role             @default(USER)
+  isActive     Boolean          @default(true)
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  sessions     RefreshSession[]
+}
+
+model RefreshSession {
+  id            String   @id @default(uuid()) @db.Uuid
+  userId        String   @db.Uuid
+  tokenHash     String   @unique
+  familyId      String   @db.Uuid
+  expiresAt     DateTime
+  revokedAt     DateTime?
+  replacedById  String?  @db.Uuid
+  createdAt     DateTime @default(now())
+  lastUsedAt    DateTime?
+  user          User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([familyId])
+}
