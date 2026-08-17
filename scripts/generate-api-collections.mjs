@@ -37,7 +37,7 @@ function sampleValue(schema, property = '') {
     email: 'user@example.com',
     mobile: '255712345678',
     phone: '255712345678',
-    password: 'change-me',
+    password: 'ChangeMe12345',
     identifier: 'user@example.com',
     refreshToken: '',
     idToken: '',
@@ -69,7 +69,10 @@ function sampleValue(schema, property = '') {
   if (Object.hasOwn(named, property)) return named[property];
   if (schema.type === 'array') return [sampleValue(schema.items, property)];
   if (schema.type === 'object' || schema.properties) {
-    const required = new Set(schema.required ?? []);
+    const required = new Set([
+      ...(schema.required ?? []),
+      ...(schema.anyOf?.[0]?.required ?? []),
+    ]);
     return Object.fromEntries(
       Object.entries(schema.properties ?? {})
         .filter(([key]) => required.has(key))

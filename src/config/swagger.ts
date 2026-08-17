@@ -396,6 +396,10 @@ export function createSwaggerDocument(app: INestApplication): OpenAPIObject {
     ...document.components.schemas,
     ...responseSchemas,
   };
+  const registerSchema = document.components.schemas.RegisterDto;
+  if (registerSchema && !('$ref' in registerSchema)) {
+    registerSchema.anyOf = [{ required: ['email'] }, { required: ['mobile'] }];
+  }
   for (const [path, pathItem] of Object.entries(document.paths)) {
     for (const method of ['get', 'post', 'put', 'patch', 'delete'] as const) {
       const operation = pathItem?.[method];

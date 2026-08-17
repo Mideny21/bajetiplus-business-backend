@@ -138,7 +138,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"password\": \"change-me\"\n}",
+              "raw": "{\n  \"email\": \"user@example.com\",\n  \"password\": \"ChangeMe12345\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -177,7 +177,7 @@
             },
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"identifier\": \"user@example.com\",\n  \"password\": \"change-me\"\n}",
+              "raw": "{\n  \"identifier\": \"user@example.com\",\n  \"password\": \"ChangeMe12345\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
